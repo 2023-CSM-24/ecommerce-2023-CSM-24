@@ -1,6 +1,8 @@
 const express = require("express");
-const categoriesRouter = require("./routes/categories");
-const productsRouter = require("./routes/products");
+const categoriesRouter = require("./categories");
+const productsRouter = require("./product");
+const variantsRouter = require("./variant");
+const skusRouter = require("./sku");
 
 const app = express();
 
@@ -14,6 +16,8 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/admin/categories", categoriesRouter);
 app.use("/api/v1/admin/products", productsRouter);
+app.use("/api/v1/admin/variants", variantsRouter);
+app.use("/api/v1/admin/skus", skusRouter);
 
 const PORT = process.env.PORT || 3000;
 
