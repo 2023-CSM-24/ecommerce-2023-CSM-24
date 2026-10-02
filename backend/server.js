@@ -1,5 +1,6 @@
 const express = require("express");
 const categoriesRouter = require("./routes/categories");
+const productsRouter = require("./routes/products");
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/admin/categories", categoriesRouter);
+app.use("/api/v1/admin/products", productsRouter);
 
 const PORT = process.env.PORT || 3000;
 
