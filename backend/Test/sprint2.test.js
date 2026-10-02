@@ -61,7 +61,7 @@ test("Admin authorization accepts correct token", () => {
 test("Database schema enforces unique category and product slugs", () => {
   const schemaPath = path.join(
     __dirname,
-    "../../database/schema.sql"
+    "../../Database/schema.sql"
   );
 
   const schema = fs.readFileSync(schemaPath, "utf8");
@@ -73,7 +73,7 @@ test("Database schema enforces unique category and product slugs", () => {
 test("Database schema enforces unique SKU codes", () => {
   const schemaPath = path.join(
     __dirname,
-    "../../database/schema.sql"
+    "../../Database/schema.sql"
   );
 
   const schema = fs.readFileSync(schemaPath, "utf8");
@@ -84,7 +84,7 @@ test("Database schema enforces unique SKU codes", () => {
 test("Database schema prevents negative SKU price and stock", () => {
   const schemaPath = path.join(
     __dirname,
-    "../../database/schema.sql"
+    "../../Database/schema.sql"
   );
 
   const schema = fs.readFileSync(schemaPath, "utf8");
@@ -98,7 +98,7 @@ test("Database schema prevents negative SKU price and stock", () => {
 test("Database schema prevents a category from being its own parent", () => {
   const schemaPath = path.join(
     __dirname,
-    "../../database/schema.sql"
+    "../../Database/schema.sql"
   );
 
   const schema = fs.readFileSync(schemaPath, "utf8");
