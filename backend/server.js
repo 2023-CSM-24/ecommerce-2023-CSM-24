@@ -17,8 +17,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1/admin/categories", categoriesRouter);
 app.use("/api/v1/admin/products", productsRouter);
 app.use("/api/v1/admin/variants", variantsRouter);
-app.use("/api/v1/admin/skus", skusRouter);
-
+app.use("/api/v1/admin", skusRouter);
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
