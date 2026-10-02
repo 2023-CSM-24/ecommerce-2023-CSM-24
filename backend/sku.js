@@ -83,7 +83,7 @@ router.post("/products/:productId/skus", requireAdmin, async (req, res) => {
 });
 
 // List SKUs
-router.get("/", requireAdmin, async (req, res) => {
+router.get("/skus", requireAdmin, async (req, res) => {
   try {
     const result = await pool.query(
       `SELECT
@@ -103,8 +103,7 @@ router.get("/", requireAdmin, async (req, res) => {
 });
 
 // Update a SKU
-router.patch("/:id", requireAdmin, async (req, res) => {
-  try {
+router.patch("/skus/:id", requireAdmin, async (req, res) => {
     const { id } = req.params;
     const {
       price,
@@ -149,8 +148,7 @@ router.patch("/:id", requireAdmin, async (req, res) => {
 });
 
 // Deactivate a SKU
-router.delete("/:id", requireAdmin, async (req, res) => {
-  try {
+router.delete("/skus/:id", requireAdmin, async (req, res) => {
     const { id } = req.params;
 
     const result = await pool.query(
