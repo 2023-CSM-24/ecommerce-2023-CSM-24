@@ -3,7 +3,7 @@ const assert = require("node:assert/strict");
 const fs = require("fs");
 const path = require("path");
 
-const requireAdmin = require("../middleware/adminAuth");
+const requireAdmin = require("../adminAuth");
 
 test("Admin authorization rejects missing or incorrect token", () => {
   process.env.ADMIN_TOKEN = "test-admin-token";
