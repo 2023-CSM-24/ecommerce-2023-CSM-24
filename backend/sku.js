@@ -5,8 +5,10 @@ const requireAdmin = require("../middleware/adminAuth");
 const router = express.Router();
 
 // Create a SKU
-router.post("/", requireAdmin, async (req, res) => {
+router.post("/products/:productId/skus", requireAdmin, async (req, res) => {
   try {
+    const { productId } = req.params;
+
     const {
       variant_id,
       sku_code,
@@ -16,13 +18,27 @@ router.post("/", requireAdmin, async (req, res) => {
     } = req.body;
 
     if (
+      !productId ||
       !variant_id ||
       !sku_code ||
       price === undefined ||
       stock_quantity === undefined
     ) {
       return res.status(400).json({
-        error: "variant_id, sku_code, price and stock_quantity are required"
+        error: "productId, variant_id, sku_code, price and stock_quantity are required"
+      });
+    }
+
+    const variantCheck = await pool.query(
+      `SELECT id
+       FROM variants
+       WHERE id = $1 AND product_id = $2`,
+      [variant_id, productId]
+    );
+
+    if (variantCheck.rows.length === 0) {
+      return res.status(400).json({
+        error: "Variant does not belong to the specified product"
       });
     }
 
